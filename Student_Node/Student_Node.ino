@@ -1,6 +1,9 @@
 const int ledPin = A0;
 const int buttonPin = 4;
 int buttonState;
+int incomingByte;
+int studentNum = 6; // set your radio number to this 
+int myTurn = false;
 
 void setup() {
   // put your setup code here, to run once:
@@ -12,23 +15,29 @@ void setup() {
 void loop() {
   queue();
   attend();
-  }
+  if (myTurn == true) {
+    digitalWrite(ledPin, HIGH);
+    } else {
+    digitalWrite(ledPin, LOW);
+    }
+}
 
 void attend() {
     if(Serial1.available() > 0) {
-      incomingByte = Serial1.read()();
+      incomingByte = Serial1.read();
     if(incomingByte == '1'){
-      digitalWrite(ledPin, HIGH);
+      myTurn = true;
     }
     if(incomingByte == '0'){
-      digitalWrite(ledPin, LOW);
+      myTurn = false;
     }
   }
 }
 
 void queue() {
   buttonState = digitalRead(buttonPin);
-  if (buttonState == HIGH) {
-    Serial1.print('H');
+  if (buttonState == LOW) {
+    Serial1.println(studentNum);
+    Serial.println(studentNum);
   }
 }
