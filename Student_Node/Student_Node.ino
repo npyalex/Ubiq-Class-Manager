@@ -3,7 +3,8 @@ const int buttonPin = 4;
 int buttonState;
 int incomingByte;
 int studentNum = 6; // set your radio number to this 
-int myTurn = false;
+bool myTurn = false;
+bool isDataSent = false;
 
 void setup() {
   // put your setup code here, to run once:
@@ -36,8 +37,12 @@ void attend() {
 
 void queue() {
   buttonState = digitalRead(buttonPin);
-  if (buttonState == LOW) {
+  if (buttonState == LOW && isDataSent == false) {
     Serial1.println(studentNum);
     Serial.println(studentNum);
+    isDataSent = true;
+  }
+  else if ( buttonState == HIGH) {
+    isDataSent = false;
   }
 }
