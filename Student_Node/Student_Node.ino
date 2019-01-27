@@ -2,7 +2,7 @@ const int ledPin = A0;
 const int buttonPin = 4;
 int buttonState;
 char incomingByte;
-int studentNum = 6; // this should be the same as your ATMY
+char studentNum = '1'; // this should be the same as your ATMY
 bool myTurn = false;
 bool isDataSent = false;
 
