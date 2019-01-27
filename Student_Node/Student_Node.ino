@@ -11,7 +11,7 @@ void setup() {
   Serial1.begin(9600);
 //  Serial.begin(9600);
   pinMode (ledPin, OUTPUT);
-  pinMode (buttonPin, INPUT);
+  pinMode (buttonPin, INPUT_PULLUP);
 }
 
 void loop() {
@@ -44,14 +44,14 @@ void attend() {
 
 void queue() {
   buttonState = digitalRead(buttonPin);
-  if (buttonState == LOW && isDataSent == false) {
+  if (buttonState == HIGH && isDataSent == false) {
     Serial1.println(studentNum);
     Serial.println(studentNum);
     delay(1);
     Serial1.println('X');
     isDataSent = true;
   }
-  else if ( buttonState == HIGH) {
+  else if ( buttonState == LOW) {
     isDataSent = false;
   }
 }
