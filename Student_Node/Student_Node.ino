@@ -18,13 +18,13 @@ void loop() {
   queue();
   attend();
 //  if (myTurn == true) {
-
+    Serial.println(incomingByte);
 }
 
 void attend() {
     if(Serial1.available() > 0) {
       incomingByte = Serial1.read();
-          if(incomingByte == '1') {
+          if(incomingByte == studentNum) {
           digitalWrite(ledPin, HIGH);
     } 
       if (incomingByte == '0') {
@@ -45,10 +45,13 @@ void attend() {
 void queue() {
   buttonState = digitalRead(buttonPin);
   if (buttonState == HIGH && isDataSent == false) {
+//    Serial1.println(studentNum);
+//    Serial1.println(studentNum);
+//    Serial1.println(studentNum);
     Serial1.println(studentNum);
     Serial.println(studentNum);
-    delay(1);
-    Serial1.println('X');
+//    delay(1);
+//    Serial1.println('X');
     isDataSent = true;
   }
   else if ( buttonState == LOW) {
