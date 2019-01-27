@@ -2,7 +2,7 @@ const int ledPin = A0;
 const int buttonPin = 4;
 int buttonState;
 char incomingByte;
-char studentNum = '1'; // this should be the same as your ATMY
+char studentNum = '5'; // this should be the same as your ATMY
 bool myTurn = false;
 bool isDataSent = false;
 
@@ -24,14 +24,14 @@ void loop() {
 void attend() {
     if(Serial1.available() > 0) {
       incomingByte = Serial1.read();
-          if(Serial.available() > 0) {
-            Serial.print(incomingByte);
-          
-    if(incomingByte == '1') {
-    digitalWrite(ledPin, HIGH);
-    } else if (incomingByte == '0') {
-    digitalWrite(ledPin, LOW);
+          if(incomingByte == '1') {
+          digitalWrite(ledPin, HIGH);
+    } 
+      if (incomingByte == '0') {
+          digitalWrite(ledPin, LOW);
     }
+      if(Serial.available() > 0) {
+            Serial.print(incomingByte);
     }
 //    if(incomingByte == '1'){
 //      myTurn = true;
