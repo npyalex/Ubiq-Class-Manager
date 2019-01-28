@@ -21,15 +21,16 @@ void attend() {
     if(Serial1.available() > 0) {
       incomingByte = Serial1.read();
       Serial1.print(incomingByte);
+      Serial.print(incomingByte);
           if(incomingByte == studentNum) {
           digitalWrite(ledPin, HIGH);
     } 
       if (incomingByte != studentNum) {
           digitalWrite(ledPin, LOW);
     }
-      if(Serial.available() > 0) {
-            Serial.print(incomingByte);
-    }
+ //     if(Serial.available() > 0) {
+ //           Serial.print(incomingByte);
+ //   }
   }
 }
 
